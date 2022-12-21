@@ -1,0 +1,230 @@
+.navbar {
+    height: 70px;
+}
+header#myHeader.navbar.sticky.white {
+    background: #212428;
+    border-bottom: 0;
+    box-shadow: 0 4px 20px 0 rgba(10, 10, 10, .8);
+    height: 70px;
+}
+
+header#myHeader.navbar .search #quick_search {
+    color: #fff;
+    background: rgba(255, 255, 255, .1);
+}
+
+header#myHeader.navbar.white .btn, .navbar.white a, .navbar.sticky.white a {
+    color: #fff;
+}
+
+header#myHeader .dropdown-toggle::after {
+    color: #fff;
+}
+
+header#myHeader .logo .d-block {
+    display: none !important;
+}
+
+header#myHeader .logo .d-none {
+    display: none !important;
+}
+
+header#myHeader .logo .d-4 {
+    display: block !important;
+}
+
+@media (max-width: 575px) {
+    .col-xs-6 {
+        flex: 0 0 auto;
+        width: 50%;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    header#myHeader .logo .d-3 {
+        display: block !important;
+    }
+
+    header#myHeader .logo .d-4 {
+        display: none !important;
+    }
+}
+
+.navbar .search #quick_search {
+    border-radius: 20px;
+}
+
+.navbar .navbar-item .lines {
+    border-bottom: 2px solid #2c94c9;
+}
+
+.navbar .mainside a {
+    text-align: center;
+    color: #fff !important;
+    background: #ff343f;
+    border-radius: 30px;
+}
+
+.navbar .mainside a:hover {
+    box-shadow: 2px 2px 20px 0 #ff343f;
+    transition: all .3s ease;
+}
+
+.navbar .menu-line, .navbar .menu-line1, .navbar .menu-line2 {
+    background: #fff;
+}
+
+.item-dropdown {
+    color: #fff !important;
+    background: rgba(33, 36, 40, .9);
+    box-shadow: 2px 2px 30px 0px rgba(20, 20, 20, 0.1);
+}
+
+.item-dropdown .dropdown a {
+    color: #fff !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.item-dropdown .dropdown a:hover {
+    color: #fff !important;
+    background: #ff343f;
+}
+
+footer.footer-light {
+    padding-top: 50px;
+}
+
+footer.footer-light .subfooter span img.d-1 {
+    display: none !important;
+}
+
+footer.footer-light .subfooter span img.d-4 {
+    display: inline-block !important;
+}
+
+.de_countdown {
+    right: 10px;
+    color: #fff;
+}
+
+.author_list_pp {
+    margin-left: 0;
+}
+
+footer.footer-light .subfooter {
+    border-top: 1px solid rgba(255, 255, 255, .1);
+}
+
+#scroll-to-top div {
+    background: #ff343f;
+}
+
+@media only screen and (max-width: 1199px) {
+    .navbar {
+        background: #212428;
+    }
+}
+
+.slick-dots {
+    bottom: 10px;
+
+    li button:before {
+        font-size: 12px;
+        color: #a1a1a1;
+    }
+
+    li.slick-active button:before {
+        color: #fff;
+    }
+}
+
+.jumbotron {
+    height: 240px !important;
+    background: linear-gradient(45deg, #256a8d, rgb(12 12 12)) !important;
+    padding-bottom: 0 !important;
+}
+
+.circle_up1 {
+    position: absolute;
+    left: -14rem;
+    top: -15rem;
+    width: 30rem;
+}
+
+.circle_up2 {
+    position: absolute;
+    left: -13rem;
+    top: 6rem;
+    width: 20rem;
+}
+
+.circle_right {
+    position: absolute;
+    right: -11rem;
+    top: -10rem;
+    width: 20rem;
+}
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    background-color: #F5F5F5;
+    overflow-x: auto;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+    background-color: #F5F5F5;
+    overflow-x: auto;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+    background-color: #338fd0;
+    overflow-x: auto;
+}
+
+section.container {
+    height: 700px;
+    padding: 50px;
+}
+
+.jumbotron h2 {
+    text-align: center;
+}
+
+.betting_button {
+    background-color: #2c94c9;
+    border: none;
+    padding: 10px 30px;
+    border-radius: 20px;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.bet_img_item {
+    width: fit-content;
+    position: relative;
+    .check {
+        position: absolute;
+        right: -5px;
+        i {
+            color: #2c94c9;
+            border: solid 4px #2c94c9;
+            border-radius: 50%;
+            font-size: 30px;
+        }
+    }
+}
+
+.success_panel {
+    width: 300px;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: dashed 3px;
+    border-radius: 20px;
+}

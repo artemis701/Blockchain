@@ -1,0 +1,971 @@
+[
+        {
+            "inputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "_seedValue",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "string",
+                    "name": "_seedString",
+                    "type": "string"
+                },
+                {
+                    "internalType": "address",
+                    "name": "_seedAddress",
+                    "type": "address"
+                },
+                {
+                    "internalType": "address",
+                    "name": "_nftContract",
+                    "type": "address"
+                }
+            ],
+            "stateMutability": "nonpayable",
+            "type": "constructor"
+        },
+        {
+            "anonymous": false,
+            "inputs": [
+                {
+                    "indexed": false,
+                    "internalType": "address",
+                    "name": "addr",
+                    "type": "address"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "enum HodlLottery.LOTTERY_TYPE",
+                    "name": "lottery_type",
+                    "type": "uint8"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "uint256",
+                    "name": "lottery_id",
+                    "type": "uint256"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "uint256",
+                    "name": "time",
+                    "type": "uint256"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "uint16",
+                    "name": "startNo",
+                    "type": "uint16"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "uint16",
+                    "name": "count",
+                    "type": "uint16"
+                }
+            ],
+            "name": "BuyTicket",
+            "type": "event"
+        },
+        {
+            "anonymous": false,
+            "inputs": [
+                {
+                    "indexed": false,
+                    "internalType": "enum HodlLottery.LOTTERY_TYPE",
+                    "name": "lottery_type",
+                    "type": "uint8"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "uint256",
+                    "name": "lottery_id",
+                    "type": "uint256"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "enum HodlLottery.LOTTERY_STATUS",
+                    "name": "status",
+                    "type": "uint8"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "uint256",
+                    "name": "time",
+                    "type": "uint256"
+                }
+            ],
+            "name": "ChangeLotteryInfo",
+            "type": "event"
+        },
+        {
+            "anonymous": false,
+            "inputs": [
+                {
+                    "indexed": false,
+                    "internalType": "enum HodlLottery.LOTTERY_TYPE",
+                    "name": "lottery_type",
+                    "type": "uint8"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "uint256",
+                    "name": "lottery_id",
+                    "type": "uint256"
+                }
+            ],
+            "name": "ClearLotteryInfo",
+            "type": "event"
+        },
+        {
+            "anonymous": false,
+            "inputs": [
+                {
+                    "indexed": false,
+                    "internalType": "enum HodlLottery.LOTTERY_TYPE",
+                    "name": "lottery_type",
+                    "type": "uint8"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "uint256",
+                    "name": "lottery_id",
+                    "type": "uint256"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "enum HodlLottery.LOTTERY_STATUS",
+                    "name": "status",
+                    "type": "uint8"
+                }
+            ],
+            "name": "CreateNewLotteryInfo",
+            "type": "event"
+        },
+        {
+            "anonymous": false,
+            "inputs": [
+                {
+                    "indexed": false,
+                    "internalType": "address",
+                    "name": "from",
+                    "type": "address"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "uint256",
+                    "name": "amount",
+                    "type": "uint256"
+                }
+            ],
+            "name": "Fallback",
+            "type": "event"
+        },
+        {
+            "anonymous": false,
+            "inputs": [
+                {
+                    "indexed": false,
+                    "internalType": "enum HodlLottery.LOTTERY_TYPE",
+                    "name": "lottery_type",
+                    "type": "uint8"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "uint256",
+                    "name": "lottery_id",
+                    "type": "uint256"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "address",
+                    "name": "addr",
+                    "type": "address"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "uint256",
+                    "name": "time",
+                    "type": "uint256"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "uint256",
+                    "name": "ticketID",
+                    "type": "uint256"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "uint256",
+                    "name": "amount",
+                    "type": "uint256"
+                }
+            ],
+            "name": "GivePriceToWinner",
+            "type": "event"
+        },
+        {
+            "anonymous": false,
+            "inputs": [
+                {
+                    "indexed": false,
+                    "internalType": "address",
+                    "name": "addr",
+                    "type": "address"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "uint256",
+                    "name": "seed1",
+                    "type": "uint256"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "uint256",
+                    "name": "seed2",
+                    "type": "uint256"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "string",
+                    "name": "seed3",
+                    "type": "string"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "address",
+                    "name": "seed4",
+                    "type": "address"
+                }
+            ],
+            "name": "LogAllSeedValueChanged",
+            "type": "event"
+        },
+        {
+            "anonymous": false,
+            "inputs": [
+                {
+                    "indexed": true,
+                    "internalType": "address",
+                    "name": "previousOwner",
+                    "type": "address"
+                },
+                {
+                    "indexed": true,
+                    "internalType": "address",
+                    "name": "newOwner",
+                    "type": "address"
+                }
+            ],
+            "name": "OwnershipTransferred",
+            "type": "event"
+        },
+        {
+            "anonymous": false,
+            "inputs": [
+                {
+                    "indexed": false,
+                    "internalType": "address",
+                    "name": "from",
+                    "type": "address"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "uint256",
+                    "name": "amount",
+                    "type": "uint256"
+                }
+            ],
+            "name": "Received",
+            "type": "event"
+        },
+        {
+            "anonymous": false,
+            "inputs": [
+                {
+                    "indexed": false,
+                    "internalType": "enum HodlLottery.LOTTERY_TYPE",
+                    "name": "lottery_type",
+                    "type": "uint8"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "uint256",
+                    "name": "lottery_id",
+                    "type": "uint256"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "uint256",
+                    "name": "time",
+                    "type": "uint256"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "address",
+                    "name": "addr",
+                    "type": "address"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "uint256",
+                    "name": "ticketID",
+                    "type": "uint256"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "uint256",
+                    "name": "price",
+                    "type": "uint256"
+                }
+            ],
+            "name": "SelectWinner",
+            "type": "event"
+        },
+        {
+            "anonymous": false,
+            "inputs": [
+                {
+                    "indexed": false,
+                    "internalType": "uint256",
+                    "name": "loopTime",
+                    "type": "uint256"
+                }
+            ],
+            "name": "SetBiDailyLoopTime",
+            "type": "event"
+        },
+        {
+            "anonymous": false,
+            "inputs": [
+                {
+                    "indexed": false,
+                    "internalType": "uint256",
+                    "name": "price",
+                    "type": "uint256"
+                }
+            ],
+            "name": "SetBiDailyTicketPrice",
+            "type": "event"
+        },
+        {
+            "anonymous": false,
+            "inputs": [
+                {
+                    "indexed": false,
+                    "internalType": "enum HodlLottery.LOTTERY_TYPE",
+                    "name": "lottery_type",
+                    "type": "uint8"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "uint256",
+                    "name": "lottery_id",
+                    "type": "uint256"
+                }
+            ],
+            "name": "SetLotteryStatus",
+            "type": "event"
+        },
+        {
+            "anonymous": false,
+            "inputs": [
+                {
+                    "indexed": false,
+                    "internalType": "address",
+                    "name": "addr",
+                    "type": "address"
+                }
+            ],
+            "name": "SetTeamFundsAddress",
+            "type": "event"
+        },
+        {
+            "anonymous": false,
+            "inputs": [
+                {
+                    "indexed": false,
+                    "internalType": "uint256",
+                    "name": "loopTime",
+                    "type": "uint256"
+                }
+            ],
+            "name": "SetTotalInvestment",
+            "type": "event"
+        },
+        {
+            "anonymous": false,
+            "inputs": [
+                {
+                    "indexed": false,
+                    "internalType": "uint256",
+                    "name": "loopTime",
+                    "type": "uint256"
+                }
+            ],
+            "name": "SetWeeklyLoopTime",
+            "type": "event"
+        },
+        {
+            "anonymous": false,
+            "inputs": [
+                {
+                    "indexed": false,
+                    "internalType": "uint256",
+                    "name": "price",
+                    "type": "uint256"
+                }
+            ],
+            "name": "SetWeeklyTicketPrice",
+            "type": "event"
+        },
+        {
+            "anonymous": false,
+            "inputs": [
+                {
+                    "indexed": false,
+                    "internalType": "address",
+                    "name": "addr",
+                    "type": "address"
+                },
+                {
+                    "indexed": false,
+                    "internalType": "uint256",
+                    "name": "balance",
+                    "type": "uint256"
+                }
+            ],
+            "name": "WithdrawAll",
+            "type": "event"
+        },
+        {
+            "stateMutability": "payable",
+            "type": "fallback"
+        },
+        {
+            "inputs": [],
+            "name": "biDailyLotteryCounter",
+            "outputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "enum HodlLottery.LOTTERY_TYPE",
+                    "name": "_lotteryType",
+                    "type": "uint8"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "_lotteryID",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "uint16",
+                    "name": "_numberOfTickets",
+                    "type": "uint16"
+                }
+            ],
+            "name": "buyTicket",
+            "outputs": [],
+            "stateMutability": "payable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "enum HodlLottery.LOTTERY_TYPE",
+                    "name": "_lotteryType",
+                    "type": "uint8"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "_lotteryID",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "enum HodlLottery.LOTTERY_STATUS",
+                    "name": "_status",
+                    "type": "uint8"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "_timestamp",
+                    "type": "uint256"
+                }
+            ],
+            "name": "changeLotteryInfo",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "enum HodlLottery.LOTTERY_TYPE",
+                    "name": "_lotteryType",
+                    "type": "uint8"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "_lotteryID",
+                    "type": "uint256"
+                }
+            ],
+            "name": "clearLotteryInfo",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "enum HodlLottery.LOTTERY_TYPE",
+                    "name": "lottery_type",
+                    "type": "uint8"
+                }
+            ],
+            "name": "createNewLotteryInfo",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "getBiDailyLoopTime",
+            "outputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "getBiDailyTicketPrice",
+            "outputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "enum HodlLottery.LOTTERY_TYPE",
+                    "name": "_lotteryType",
+                    "type": "uint8"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "_lotteryID",
+                    "type": "uint256"
+                }
+            ],
+            "name": "getLotteryRemainTime",
+            "outputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "enum HodlLottery.LOTTERY_TYPE",
+                    "name": "_lotteryType",
+                    "type": "uint8"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "_lotteryID",
+                    "type": "uint256"
+                }
+            ],
+            "name": "getLotteryStatus",
+            "outputs": [
+                {
+                    "components": [
+                        {
+                            "internalType": "enum HodlLottery.LOTTERY_STATUS",
+                            "name": "status",
+                            "type": "uint8"
+                        },
+                        {
+                            "internalType": "uint256",
+                            "name": "totalCount",
+                            "type": "uint256"
+                        },
+                        {
+                            "internalType": "uint256",
+                            "name": "poolAmount",
+                            "type": "uint256"
+                        }
+                    ],
+                    "internalType": "struct HodlLottery.Ret_Ticket_Status",
+                    "name": "",
+                    "type": "tuple"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "enum HodlLottery.LOTTERY_TYPE",
+                    "name": "_lotteryType",
+                    "type": "uint8"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "_lotteryID",
+                    "type": "uint256"
+                }
+            ],
+            "name": "getLottoryInfo",
+            "outputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "uint16",
+                    "name": "",
+                    "type": "uint16"
+                },
+                {
+                    "internalType": "address",
+                    "name": "",
+                    "type": "address"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "uint16",
+                    "name": "",
+                    "type": "uint16"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "getTeamFundsAddress",
+            "outputs": [
+                {
+                    "internalType": "address",
+                    "name": "",
+                    "type": "address"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "getTotalInvestment",
+            "outputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "getWeeklyLoopTime",
+            "outputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "getWeeklyTicketPrice",
+            "outputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "nftContract",
+            "outputs": [
+                {
+                    "internalType": "contract HodlNFT",
+                    "name": "",
+                    "type": "address"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "owner",
+            "outputs": [
+                {
+                    "internalType": "address",
+                    "name": "",
+                    "type": "address"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "renounceOwnership",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "enum HodlLottery.LOTTERY_TYPE",
+                    "name": "_lotteryType",
+                    "type": "uint8"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "_lotteryID",
+                    "type": "uint256"
+                }
+            ],
+            "name": "selectWinner",
+            "outputs": [
+                {
+                    "internalType": "uint16",
+                    "name": "",
+                    "type": "uint16"
+                }
+            ],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "_time",
+                    "type": "uint256"
+                }
+            ],
+            "name": "setBiDailyLoopTime",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "_ticketPrice",
+                    "type": "uint256"
+                }
+            ],
+            "name": "setBiDailyTicketPrice",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "enum HodlLottery.LOTTERY_TYPE",
+                    "name": "_lotteryType",
+                    "type": "uint8"
+                },
+                {
+                    "internalType": "uint256",
+                    "name": "_lotteryID",
+                    "type": "uint256"
+                }
+            ],
+            "name": "setLotteryStatus",
+            "outputs": [
+                {
+                    "internalType": "bool",
+                    "name": "",
+                    "type": "bool"
+                }
+            ],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "_addr",
+                    "type": "address"
+                }
+            ],
+            "name": "setTeamFundsAddress",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "_value",
+                    "type": "uint256"
+                }
+            ],
+            "name": "setTotalInvestment",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "_time",
+                    "type": "uint256"
+                }
+            ],
+            "name": "setWeeklyLoopTime",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "_ticketPrice",
+                    "type": "uint256"
+                }
+            ],
+            "name": "setWeeklyTicketPrice",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "totalMarketcap",
+            "outputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "newOwner",
+                    "type": "address"
+                }
+            ],
+            "name": "transferOwnership",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "_seedValue",
+                    "type": "uint256"
+                },
+                {
+                    "internalType": "string",
+                    "name": "_seedString",
+                    "type": "string"
+                },
+                {
+                    "internalType": "address",
+                    "name": "_seedAddress",
+                    "type": "address"
+                }
+            ],
+            "name": "updateSeeds",
+            "outputs": [
+                {
+                    "internalType": "bool",
+                    "name": "",
+                    "type": "bool"
+                }
+            ],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "weeklyLotteryCounter",
+            "outputs": [
+                {
+                    "internalType": "uint256",
+                    "name": "",
+                    "type": "uint256"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "withdrawAll",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "stateMutability": "payable",
+            "type": "receive"
+        }
+    ]

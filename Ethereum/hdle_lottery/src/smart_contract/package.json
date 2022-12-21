@@ -1,0 +1,25 @@
+{
+  "name": "smartcontract",
+  "version": "1.0.0",
+  "description": "",
+  "main": "truffle-config.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "ganache": "ganache-cli -m \"stereo consider quality wild fat farm symptom bundle laundry side one lemon\"",
+    "test": "yarn truffle test",
+    "test-coverage": "yarn truffle run coverage --solcoverjs ./.solcover.js --file=\"./test/tweet_storm.js\""
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@openzeppelin/contracts": "^4.4.1",
+    "fs": "0.0.1-security",
+    "sha256": "^0.2.0"
+  },
+  "devDependencies": {
+    "solidity-coverage": "^0.7.17",
+    "truffle": "^5.4.26"
+  }
+}

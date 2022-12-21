@@ -1,0 +1,535 @@
+[
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "gdTokenAddress",
+                "type": "address"
+            },
+            {
+                "internalType": "address",
+                "name": "feeRx",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "nonpayable",
+        "type": "constructor"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "components": [
+                    {
+                        "components": [
+                            {
+                                "internalType": "string",
+                                "name": "name",
+                                "type": "string"
+                            },
+                            {
+                                "internalType": "string",
+                                "name": "tweetUrl",
+                                "type": "string"
+                            },
+                            {
+                                "internalType": "string",
+                                "name": "shareText",
+                                "type": "string"
+                            },
+                            {
+                                "internalType": "string",
+                                "name": "via",
+                                "type": "string"
+                            },
+                            {
+                                "internalType": "string",
+                                "name": "hashtag",
+                                "type": "string"
+                            },
+                            {
+                                "internalType": "uint256",
+                                "name": "bountyAmount",
+                                "type": "uint256"
+                            },
+                            {
+                                "internalType": "uint256",
+                                "name": "maxBounty",
+                                "type": "uint256"
+                            },
+                            {
+                                "internalType": "uint256",
+                                "name": "startTimeStamp",
+                                "type": "uint256"
+                            },
+                            {
+                                "internalType": "uint256",
+                                "name": "duration",
+                                "type": "uint256"
+                            },
+                            {
+                                "internalType": "uint256",
+                                "name": "campaignId",
+                                "type": "uint256"
+                            }
+                        ],
+                        "internalType": "struct TweetStorm.PromoterParam",
+                        "name": "param",
+                        "type": "tuple"
+                    },
+                    {
+                        "internalType": "address",
+                        "name": "promoter",
+                        "type": "address"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "claimedBounty",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "avatarUri",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "campaignUri",
+                        "type": "string"
+                    }
+                ],
+                "indexed": false,
+                "internalType": "struct TweetStorm.Campaign",
+                "name": "camp",
+                "type": "tuple"
+            }
+        ],
+        "name": "AddCampaign",
+        "type": "event"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": false,
+                "internalType": "address",
+                "name": "promoter",
+                "type": "address"
+            },
+            {
+                "indexed": false,
+                "internalType": "string",
+                "name": "avatarUri",
+                "type": "string"
+            }
+        ],
+        "name": "AddPromoter",
+        "type": "event"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": true,
+                "internalType": "address",
+                "name": "previousOwner",
+                "type": "address"
+            },
+            {
+                "indexed": true,
+                "internalType": "address",
+                "name": "newOwner",
+                "type": "address"
+            }
+        ],
+        "name": "OwnershipTransferred",
+        "type": "event"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": false,
+                "internalType": "uint64",
+                "name": "campaignId",
+                "type": "uint64"
+            },
+            {
+                "indexed": false,
+                "internalType": "address",
+                "name": "promoterAddress",
+                "type": "address"
+            },
+            {
+                "indexed": false,
+                "internalType": "string",
+                "name": "tweetUrl",
+                "type": "string"
+            }
+        ],
+        "name": "SubmitTweet",
+        "type": "event"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "string",
+                "name": "_name",
+                "type": "string"
+            },
+            {
+                "internalType": "string",
+                "name": "_tweetUrl",
+                "type": "string"
+            },
+            {
+                "internalType": "string",
+                "name": "_shareText",
+                "type": "string"
+            },
+            {
+                "internalType": "string",
+                "name": "_via",
+                "type": "string"
+            },
+            {
+                "internalType": "string",
+                "name": "_hashtag",
+                "type": "string"
+            },
+            {
+                "internalType": "uint256",
+                "name": "_bountyAmount",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "_maxBounty",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "_startTimeStamp",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "_duration",
+                "type": "uint256"
+            },
+            {
+                "internalType": "string",
+                "name": "campaignUri",
+                "type": "string"
+            }
+        ],
+        "name": "addCampaign",
+        "outputs": [
+            {
+                "internalType": "uint64",
+                "name": "",
+                "type": "uint64"
+            }
+        ],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "string",
+                "name": "avatarUri",
+                "type": "string"
+            }
+        ],
+        "name": "addPromoter",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "name": "campaigns",
+        "outputs": [
+            {
+                "components": [
+                    {
+                        "internalType": "string",
+                        "name": "name",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "tweetUrl",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "shareText",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "via",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "hashtag",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "bountyAmount",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "maxBounty",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "startTimeStamp",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "duration",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "campaignId",
+                        "type": "uint256"
+                    }
+                ],
+                "internalType": "struct TweetStorm.PromoterParam",
+                "name": "param",
+                "type": "tuple"
+            },
+            {
+                "internalType": "address",
+                "name": "promoter",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "claimedBounty",
+                "type": "uint256"
+            },
+            {
+                "internalType": "string",
+                "name": "avatarUri",
+                "type": "string"
+            },
+            {
+                "internalType": "string",
+                "name": "campaignUri",
+                "type": "string"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "bytes32",
+                "name": "",
+                "type": "bytes32"
+            }
+        ],
+        "name": "claimerByTweetUrlHash",
+        "outputs": [
+            {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "gdToken",
+        "outputs": [
+            {
+                "internalType": "contract GoodDollar",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "idVerifyContract",
+        "outputs": [
+            {
+                "internalType": "contract Identity",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "owner",
+        "outputs": [
+            {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            },
+            {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "name": "participations",
+        "outputs": [
+            {
+                "internalType": "bool",
+                "name": "paid",
+                "type": "bool"
+            },
+            {
+                "internalType": "string",
+                "name": "tweetUrl",
+                "type": "string"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "name": "promoters",
+        "outputs": [
+            {
+                "internalType": "string",
+                "name": "",
+                "type": "string"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "renounceOwnership",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "feeRx",
+                "type": "address"
+            }
+        ],
+        "name": "setFeeRecipient",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint64",
+                "name": "campaignId",
+                "type": "uint64"
+            },
+            {
+                "internalType": "string",
+                "name": "_tweetUrl",
+                "type": "string"
+            },
+            {
+                "internalType": "bytes",
+                "name": "signedPermit",
+                "type": "bytes"
+            }
+        ],
+        "name": "submitTweet",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "totalCampaignCount",
+        "outputs": [
+            {
+                "internalType": "uint64",
+                "name": "",
+                "type": "uint64"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "newOwner",
+                "type": "address"
+            }
+        ],
+        "name": "transferOwnership",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "bytes32",
+                "name": "",
+                "type": "bytes32"
+            }
+        ],
+        "name": "tweetUrlHash",
+        "outputs": [
+            {
+                "internalType": "bool",
+                "name": "",
+                "type": "bool"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    }
+]
