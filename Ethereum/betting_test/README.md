@@ -1,1 +1,0 @@
-# betting_test_project

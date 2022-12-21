@@ -1,1 +1,0 @@
-# nft_minting_openmarket
